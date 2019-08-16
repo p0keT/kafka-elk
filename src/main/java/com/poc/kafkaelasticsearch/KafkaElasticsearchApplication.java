@@ -1,23 +1,30 @@
 package com.poc.kafkaelasticsearch;
 
 import com.poc.kafkaelasticsearch.service.PrimeNumberCalculator;
-import com.poc.kafkaelasticsearch.service.PrimeNumberServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Random;
-
+@Slf4j
 @SpringBootApplication
 public class KafkaElasticsearchApplication {
+
 
 	public static void main(String[] args){
 		SpringApplication.run(KafkaElasticsearchApplication.class, args);
 		PrimeNumberCalculator primeNumberCalculator = new PrimeNumberCalculator();
+
 		long start2 = System.currentTimeMillis();
-		System.out.println(primeNumberCalculator.obtainPrimeNumber(100000000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
+		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
 		long end2 = System.currentTimeMillis();
 		System.out.println("////"+(end2-start2));
 	}

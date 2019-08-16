@@ -20,10 +20,10 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Value("localhost:9092")
+    @Value("${kafka.server}")
     private String kafkaServer;
 
-    @Value("server.broadcast")
+    @Value("${kafka.group.id}")
     private String kafkaGroupId;
 
     @Bean

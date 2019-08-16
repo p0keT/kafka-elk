@@ -1,8 +1,12 @@
 package com.poc.kafkaelasticsearch.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class ReportStatus extends AbstractDto{
     private byte readiness_percentage;
 

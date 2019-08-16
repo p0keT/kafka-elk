@@ -19,16 +19,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Random;
-@Service
 @Slf4j
+@Service
 public class PrimeNumberServiceImpl implements PrimeNumberService {
 
     private final KafkaTemplate<Long, ReportStatus> kafkaReportStatusTemplate;
     private final KafkaTemplate<Long, PrimeNumber> kafkaPrimeNumberTemplate;
     private final ObjectMapper objectMapper;
     private final PrimeNumberCalculator primeNumberCalculator;
-    @Value("${logging.file}")
-    private String path;
 
     @Autowired
     public PrimeNumberServiceImpl(KafkaTemplate<Long, ReportStatus> kafkaReportStatusTemplate,
@@ -44,7 +42,6 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
     @Override
     @KafkaListener(id = "report.request", topics = {"report_requests"}, containerFactory = "singlePrimeIndexFactory")
     public void consume(PrimeIndex primeIndex) {
-        System.out.println("**********************"+path);
         log.info("Request for prime number: "+primeIndex.toString());
         System.out.println(primeIndex.toString());
         //викликається логіка по формуванню звіту

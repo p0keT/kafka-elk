@@ -19,10 +19,10 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    @Value("localhost:9092")
+    @Value("${kafka.server}")
     private String kafkaServer;
 
-    @Value("prime.number.service")
+    @Value("${kafka.producer.id}")
     private String kafkaProducerId;
 
     @Bean
