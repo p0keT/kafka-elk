@@ -11,22 +11,8 @@ import java.util.Random;
 @SpringBootApplication
 public class KafkaElasticsearchApplication {
 
-
 	public static void main(String[] args){
 		SpringApplication.run(KafkaElasticsearchApplication.class, args);
-		PrimeNumberCalculator primeNumberCalculator = new PrimeNumberCalculator();
-
-		long start2 = System.currentTimeMillis();
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		log.info("Request for prime number: "+primeNumberCalculator.obtainPrimeNumber(1000));
-		long end2 = System.currentTimeMillis();
-		System.out.println("////"+(end2-start2));
 	}
 
 }

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.poc</groupId>
-	<artifactId>kafka-elasticsearch</artifactId>
+	<artifactId>kafka-elk</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kafka-elasticsearch</name>
+	<name>kafka-elk</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -1,18 +1,10 @@
 package com.poc.kafkaelasticsearch.service;
 
-import org.springframework.stereotype.Component;
+public final class PrimeNumberCalculator {
 
-import java.math.BigInteger;
-import java.util.Random;
-
-//TODO можливо слід зробити іммутебл класс
-@Component
-public class PrimeNumberCalculator {
-
-    //TODO: розібратися з лонг і інт
-    public Long obtainPrimeNumber(int n) {
-        if (n < 2) return 2L;
-        if (n == 2) return 3L;
+    public static int obtainPrimeNumber(int n) {
+        if (n < 2) return 2;
+        if (n == 2) return 3;
         int limit, root, count = 1;
         limit = (int)(n*(Math.log(n) + Math.log(Math.log(n)))) + 3;
         root = (int)Math.sqrt(limit) + 1;
@@ -33,6 +25,6 @@ public class PrimeNumberCalculator {
                 ++count;
             }
         }
-        return (long) (2 * p + 1);
+        return 2 * p + 1;
     }
 }
