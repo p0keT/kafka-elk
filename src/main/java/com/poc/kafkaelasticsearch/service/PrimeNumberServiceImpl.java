@@ -19,6 +19,7 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
     private final KafkaTemplate<Long, ReportStatus> kafkaReportStatusTemplate;
     private final KafkaTemplate<Long, PrimeNumber> kafkaPrimeNumberTemplate;
 
+
     @Autowired
     public PrimeNumberServiceImpl(KafkaTemplate<Long, ReportStatus> kafkaReportStatusTemplate,
                                   KafkaTemplate<Long, PrimeNumber> kafkaPrimeNumberTemplate) {
@@ -27,12 +28,12 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
     }
 
     @Override
-    @KafkaListener(id = "report.request", topics = {"report_requests"}, containerFactory = "singlePrimeIndexFactory")
+    @KafkaListener(id = "report.request", topics = {"topic.report.requests"}, containerFactory = "singlePrimeIndexFactory")
     public void consume(PrimeIndex primeIndex) {
 
         int primeLong = PrimeNumberCalculator.obtainPrimeNumber(primeIndex.getPrime_index());
 
-        //A piece of code to simulate work.
+        //A piece of code to simulate hard work.
         int seconds = (new Random().nextInt(91)+10);
         for (int i=1;i<=seconds;i++) {
             try {
@@ -57,14 +58,14 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
     @Override
     public void produce(ReportStatus reportStatus) {
         log.info("<= sending {}", reportStatus.toString());
-        kafkaReportStatusTemplate.send("report_status", reportStatus);
+        kafkaReportStatusTemplate.send("topic.report.status", reportStatus);
     }
 
     @Override
     public void produce(PrimeNumber primeNumber) {
         log.info("Result report of prime number: "+primeNumber.toString());
         log.info("<= sending {}", primeNumber.toString());
-        kafkaPrimeNumberTemplate.send("completed_reports", primeNumber);
+        kafkaPrimeNumberTemplate.send("topic.report.completed", primeNumber);
     }
 
 }
